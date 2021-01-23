@@ -5,7 +5,7 @@ pipeline {
     }
     
     agent {
-        label local
+        label 'local'
     }
 
     options {
