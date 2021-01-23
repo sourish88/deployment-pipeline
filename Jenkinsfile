@@ -18,7 +18,10 @@ pipeline {
         // Deployment stage
         stage('Deploy') {
             steps {
-                bat "docker run -d --name $APP_NAME -p 8081:8080 $DOCKER_REPO:$VERSION_TAG"
+                bat """
+                docker rm $APP_NAME
+                docker run -d --name $APP_NAME -p 8081:8080 $DOCKER_REPO:$VERSION_TAG
+                """
             }
         }
     }
