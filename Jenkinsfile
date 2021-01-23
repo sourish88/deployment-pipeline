@@ -4,15 +4,17 @@ pipeline {
         registryCredential = 'DockerHub-Creds'
     }
     
-    agent {
-        label 'local'
-    }
-
     parameters {
         string(name: 'APP_NAME',  defaultValue: '',  description: 'Name of the container', trim: true)
         string(name: 'DOCKER_REPO',  defaultValue: '',  description: 'Docker repository', trim: true)
         string(name: 'VERSION_TAG',  defaultValue: '',  description: 'Docker image tag', trim: true)
+        string(name: 'ENV_NAME',  defaultValue: '',  description: 'Docker image tag', trim: true)
     }
+
+    agent {
+        label ENV_NAME
+    }
+
 
     stages {
         // Deployment stage
