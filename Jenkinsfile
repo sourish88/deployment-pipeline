@@ -8,13 +8,6 @@ pipeline {
         label 'local'
     }
 
-    options {
-        ansiColor('xterm')
-        buildDiscarder(logRotator(numToKeepStr: '15'))
-        timestamps()
-        timeout(time: 20, unit: 'MINUTES')
-    }
-
     parameters {
         string(name: 'APP_NAME',  defaultValue: '',  description: 'Name of the container', trim: true)
         string(name: 'DOCKER_REPO',  defaultValue: '',  description: 'Docker repository', trim: true)
